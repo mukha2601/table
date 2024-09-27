@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <Table :columns="columns" :data="data" />
+  <div class="flex flex-col gap-5 m-5">
+    <Table :columns="columns" :data="dataTable" />
+    <TreeSelect :data="data" />
   </div>
 </template>
 
@@ -12,7 +13,7 @@ const columns = [
   { title: "Tags", dataIndex: "tags", key: "tags" },
 ];
 
-const data = [
+const dataTable = [
   {
     key: 1,
     name: "John Brown",
@@ -58,4 +59,50 @@ const data = [
     ],
   },
 ];
+
+const data = ref([
+  {
+    id: 1,
+    name: "Users",
+    level: 0,
+    children: [
+      {
+        id: 11,
+        name: "Teachers",
+        level: 1,
+        children: [
+          {
+            id: 1,
+            name: "Students",
+            level: 0,
+            children: [
+              {
+                id: 11,
+                name: "boys",
+                level: 1,
+                children: [
+                  {
+                    id: 111,
+                    name: "mukha",
+                    level: 2,
+                  },
+                ],
+              },
+              {
+                id: 12,
+                name: "girls",
+                level: 1,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 12,
+        name: "Admins",
+        level: 1,
+      },
+    ],
+  },
+]);
 </script>
